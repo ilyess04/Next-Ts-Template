@@ -1,10 +1,10 @@
 import axios, { AxiosResponse } from "axios";
 class DashboardAPI {
+  _apis = axios.create({
+    baseURL: `${process.env.API_URL}` + "/dashboard",
+  });
   async getDashboardData(): Promise<AxiosResponse> {
-    const _apis = axios.create({
-      baseURL: `${process.env.API_URL}` + "/dashboard",
-    });
-    return await axios.get("/getdashboard");
+    return await this._apis.get("/getdashboard");
   }
 }
 export { DashboardAPI };
